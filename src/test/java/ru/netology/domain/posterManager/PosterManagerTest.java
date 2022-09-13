@@ -16,6 +16,7 @@ class PosterManagerTest {
     String movie8 = "Монстры на каникулах";
     String movie9 = "Зверополис";
     String movie10 = "Зверопой";
+    String movie11 = "Головоломка";
 
     @Test
     public void shouldAddMovies() {
@@ -49,8 +50,8 @@ class PosterManagerTest {
     }
 
     @Test
-    public void shouldReverseAllMovies() {
-        PosterManager manager = new PosterManager(10);
+    public void shouldFindLastEqualsLimit() {
+        PosterManager manager = new PosterManager();
         manager.addMovie(movie1);
         manager.addMovie(movie2);
         manager.addMovie(movie3);
@@ -69,8 +70,48 @@ class PosterManagerTest {
     }
 
     @Test
+    public void shouldFindLastUnderLimit() {
+        PosterManager manager = new PosterManager();
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+        manager.addMovie(movie9);
+
+        String[] expected = {movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        String[] actual = manager.findLast();
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindLastOverLimit() {
+        PosterManager manager = new PosterManager(11);
+        manager.addMovie(movie1);
+        manager.addMovie(movie2);
+        manager.addMovie(movie3);
+        manager.addMovie(movie4);
+        manager.addMovie(movie5);
+        manager.addMovie(movie6);
+        manager.addMovie(movie7);
+        manager.addMovie(movie8);
+        manager.addMovie(movie9);
+        manager.addMovie(movie10);
+        manager.addMovie(movie11);
+
+        String[] expected = {movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        String[] actual = manager.findLast();
+
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
     public void shouldReverseFiveMovies() {
-        PosterManager manager = new PosterManager(5);
+        PosterManager manager = new PosterManager();
         manager.addMovie(movie1);
         manager.addMovie(movie2);
         manager.addMovie(movie3);

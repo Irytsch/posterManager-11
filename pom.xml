@@ -69,7 +69,7 @@
                     </execution>
                     <execution>
                         <id>default-check</id>
-                       <configuration>
+                        <configuration>
                             <rules>
                                 <rule>
                                     <element>BUNDLE</element>

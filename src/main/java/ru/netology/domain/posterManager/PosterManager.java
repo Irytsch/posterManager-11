@@ -1,14 +1,16 @@
 package ru.netology.domain.posterManager;
 
 public class PosterManager {
-    public String[] movies = new String[0];
+    private String[] movies = new String[0];
     private int movieLimit;
 
     public PosterManager() {
+
         movieLimit = 10;
     }
 
     public PosterManager(int movieLimit) {
+
         this.movieLimit = movieLimit;
     }
 
@@ -31,14 +33,12 @@ public class PosterManager {
         int resultLength;
         if (movieLimit < movies.length) {
             resultLength = movieLimit;
-        } else{
+        } else {
             resultLength = movies.length;
         }
-  String[] result = new String[resultLength];
-        for (int i = 0; i < movieLimit; i++) {
+        String[] result = new String[resultLength];
+        for (int i = 0; i < resultLength; i++) {
             result[i] = movies[movies.length - 1 - i];
-            // заполняем result из массива что лежит в поле
-            // в обратном порядке
         }
         return result;
     }
