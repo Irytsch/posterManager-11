@@ -90,7 +90,7 @@ class PosterManagerTest {
 
     @Test
     public void shouldFindLastOverLimit() {
-        PosterManager manager = new PosterManager(11);
+        PosterManager manager = new PosterManager();
         manager.addMovie(movie1);
         manager.addMovie(movie2);
         manager.addMovie(movie3);
@@ -103,7 +103,7 @@ class PosterManagerTest {
         manager.addMovie(movie10);
         manager.addMovie(movie11);
 
-        String[] expected = {movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        String[] expected = {movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2};
         String[] actual = manager.findLast();
 
         assertArrayEquals(expected, actual);
